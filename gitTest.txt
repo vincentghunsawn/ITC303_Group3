@@ -5,7 +5,7 @@ class Person
 	private int age;
 	private String address;
 	
-	//Constructor
+	//constructor
 	public Person(int id)
 	{
 		this.id = id;
