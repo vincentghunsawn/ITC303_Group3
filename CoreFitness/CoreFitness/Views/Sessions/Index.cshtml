@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CoreFitness.Models.Session>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div class="container">
+        <h1 class="text-center">Timetable</h1>
+        <p>
+            <a asp-action="Create" class="btn btn-primary m-1"><i class="fas fa-plus"></i> Session</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Class
+                    </th>
+                    <th>
+                        Instructor
+                    </th>
+                    <th>
+                        Time
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ClassName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InstructorName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SessionTime)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="m-1"><i class="fas fa-pencil-alt"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="m-1"> <i class="fas fa-trash-alt text-danger"></i></a>
+                            <a class="btn btn-primary m-1" href="#">Book</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

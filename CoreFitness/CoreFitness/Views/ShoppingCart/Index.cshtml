@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CoreFitness.Models.ShoppingCart>
+
+
+
+@{
+
+    ViewBag.Title = "Shopping Cart";
+}
+
+
+    <div class="container">
+
+        <h1 class="text-center">Shopping Cart</h1>
+
+        <div class="row">
+            <h3 class="col">
+                Name
+            </h3>
+            <h3 class="col">Price</h3>
+
+        </div>
+
+
+            @foreach (var item in Model)
+            {
+
+                <div class="row">
+                    <h3 class="col">
+                        @item.ProductName
+                    </h3>
+                    <h3 class="col">@item.ProductPrice</h3>
+
+                    <a asp-controller="shoppingcart" asp-action="delete" asp-route-id="@item.Id" class="btn btn-danger m-1">Remove Item</a>
+                </div>
+
+            }
+
+
+        </div>
+
+
