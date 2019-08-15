@@ -28,8 +28,13 @@ using CoreFitness.ViewModels;
 
 #line default
 #line hidden
+#line 4 "C:\Users\Mende\Desktop\CoreFitness\CoreFitness\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"889382c39ad35bab9c3698331fe33197354a4aae", @"/Views/Products/ProductDetails.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"86154427ab6d6500c306750cebd08d40734275c8", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"041a0c756b17822164c60b120370a82d5a6fe193", @"/Views/_ViewImports.cshtml")]
     public class Views_Products_ProductDetails : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ProductDetailsViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("card-img-top"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -86,7 +91,7 @@ using CoreFitness.ViewModels;
             WriteLiteral("</h1>\r\n                </div>\r\n\r\n                <div class=\"card-body text-center\">\r\n                    ");
             EndContext();
             BeginContext(469, 71, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "889382c39ad35bab9c3698331fe33197354a4aae6943", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "889382c39ad35bab9c3698331fe33197354a4aae7096", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ImageTagHelper>();
@@ -149,7 +154,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper.AppendVersion = true;
             WriteLiteral("</h4>\r\n\r\n                </div>\r\n                <div class=\"card-footer text-center\">\r\n                    ");
             EndContext();
             BeginContext(852, 80, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "889382c39ad35bab9c3698331fe33197354a4aae10464", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "889382c39ad35bab9c3698331fe33197354a4aae10617", async() => {
                 BeginContext(924, 4, true);
                 WriteLiteral("Back");
                 EndContext();
@@ -174,7 +179,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper.AppendVersion = true;
             WriteLiteral("\r\n\r\n                    ");
             EndContext();
             BeginContext(956, 269, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "889382c39ad35bab9c3698331fe33197354a4aae12147", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "889382c39ad35bab9c3698331fe33197354a4aae12300", async() => {
                 BeginContext(1183, 38, true);
                 WriteLiteral("<i class=\"fas fa-2x fa-cart-plus\"></i>");
                 EndContext();

@@ -16,8 +16,7 @@ namespace CoreFitness.Models
         [Required]
         public string InstructorName { get; set; }
 
-        [Required]
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime SessionTime { get; set; }
 
     }

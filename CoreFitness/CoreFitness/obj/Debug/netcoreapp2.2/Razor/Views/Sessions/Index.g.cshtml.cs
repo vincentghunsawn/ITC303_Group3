@@ -28,8 +28,13 @@ using CoreFitness.ViewModels;
 
 #line default
 #line hidden
+#line 4 "C:\Users\Mende\Desktop\CoreFitness\CoreFitness\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"bb306d0459dc0382801f3a554b9111c9882e8e42", @"/Views/Sessions/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"86154427ab6d6500c306750cebd08d40734275c8", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"041a0c756b17822164c60b120370a82d5a6fe193", @"/Views/_ViewImports.cshtml")]
     public class Views_Sessions_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<CoreFitness.Models.Session>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Create", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -72,7 +77,7 @@ using CoreFitness.ViewModels;
             WriteLiteral("\r\n    <div class=\"container\">\r\n        <h1 class=\"text-center\">Timetable</h1>\r\n        <p>\r\n            ");
             EndContext();
             BeginContext(191, 90, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bb306d0459dc0382801f3a554b9111c9882e8e425324", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bb306d0459dc0382801f3a554b9111c9882e8e425477", async() => {
                 BeginContext(242, 35, true);
                 WriteLiteral("<i class=\"fas fa-plus\"></i> Session");
                 EndContext();
@@ -152,7 +157,7 @@ using CoreFitness.ViewModels;
             WriteLiteral("\r\n                        </td>\r\n                        <td>\r\n                            ");
             EndContext();
             BeginContext(1288, 94, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bb306d0459dc0382801f3a554b9111c9882e8e429021", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bb306d0459dc0382801f3a554b9111c9882e8e429174", async() => {
                 BeginContext(1345, 33, true);
                 WriteLiteral("<i class=\"fas fa-pencil-alt\"></i>");
                 EndContext();
@@ -188,7 +193,7 @@ using CoreFitness.ViewModels;
             WriteLiteral("\r\n                            ");
             EndContext();
             BeginContext(1412, 108, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bb306d0459dc0382801f3a554b9111c9882e8e4211499", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bb306d0459dc0382801f3a554b9111c9882e8e4211652", async() => {
                 BeginContext(1471, 45, true);
                 WriteLiteral(" <i class=\"fas fa-trash-alt text-danger\"></i>");
                 EndContext();

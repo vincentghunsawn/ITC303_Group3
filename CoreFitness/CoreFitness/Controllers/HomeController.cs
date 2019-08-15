@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CoreFitness.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace CoreFitness.Controllers
 {
@@ -15,10 +17,32 @@ namespace CoreFitness.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [Route("Home/HttpStatusErrorHandler/{statusCode}")]
+        public IActionResult HttpStatusErrorHandler(int statusCode)
+        {
+            switch(statusCode)
+            {
+                case 404:
+                    ViewBag.ErrorMessage = "The requested resource can not be found";
+                    break;
+            }
+
+            return View("NotFound");
+        }
+
+        [Route("Home/Error")]
+        [AllowAnonymous]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var exceptionDetails = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+
+
+            ViewBag.ExceptionPath = exceptionDetails.Path;
+            ViewBag.ExceptionMessage = exceptionDetails.Error.Message;
+            ViewBag.Stacktrace = exceptionDetails.Error.StackTrace;
+
+            return View("Error");
+
         }
     }
 }

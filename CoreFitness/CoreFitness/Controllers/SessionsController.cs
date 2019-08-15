@@ -11,142 +11,98 @@ namespace CoreFitness.Controllers
 {
     public class SessionsController : Controller
     {
-        private readonly AppDbContext _context;
-
-        public SessionsController(AppDbContext context)
+        private readonly ISessionRepository _sessionRepository;
+       
+        public SessionsController(ISessionRepository sessionRepository ) 
         {
-            _context = context;
+            _sessionRepository = sessionRepository;
         }
 
-        // GET: Sessions
-        public async Task<IActionResult> Index()
+
+        // Get a list of all sessions
+        [HttpGet]
+        public ViewResult Index()
         {
-            return View(await _context.Timetable.ToListAsync());
+            var model = _sessionRepository.GetSessions();
+            return View(model);
         }
 
-        // GET: Sessions/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var session = await _context.Timetable
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (session == null)
-            {
-                return NotFound();
-            }
-
-            return View(session);
-        }
-
-        // GET: Sessions/Create
-        public IActionResult Create()
+        public ViewResult Create()
         {
             return View();
         }
 
-        // POST: Sessions/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Add a session 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ClassName,InstructorName,SessionTime")] Session session)
+        public IActionResult Create(Session model)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(session);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(session);
-        }
-
-        // GET: Sessions/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var session = await _context.Timetable.FindAsync(id);
-            if (session == null)
-            {
-                return NotFound();
-            }
-            return View(session);
-        }
-
-        // POST: Sessions/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ClassName,InstructorName,SessionTime")] Session session)
-        {
-            if (id != session.Id)
-            {
-                return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
-                try
+                Session newSession = new Session
                 {
-                    _context.Update(session);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!SessionExists(session.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                    ClassName = model.ClassName,
+                    InstructorName = model.InstructorName,
+                    SessionTime = model.SessionTime
+                };
+
+
+                _sessionRepository.Add(newSession);
+
+                return RedirectToAction("index", new { id = newSession.Id });
             }
-            return View(session);
+
+            return View();
+
         }
 
-        // GET: Sessions/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // Fetch current session values
+        [HttpGet]
+        public ViewResult Edit (int id)
         {
-            if (id == null)
+            Session session = _sessionRepository.GetSession(id);
+
+            Session sessionModel = new Session
             {
-                return NotFound();
-            }
+                Id = session.Id,
+                ClassName = session.ClassName,
+                InstructorName = session.InstructorName,
+                SessionTime = session.SessionTime
+                
+            };
 
-            var session = await _context.Timetable
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (session == null)
+            return View(sessionModel);
+        }
+
+        // Edit a session 
+        [HttpPost]
+        public IActionResult Edit(Session model)
+        {
+            if(ModelState.IsValid)
             {
-                return NotFound();
+                Session session = _sessionRepository.GetSession(model.Id);
+                session.ClassName = model.ClassName;
+                session.InstructorName = model.InstructorName;
+                session.SessionTime = model.SessionTime;
+
+
+                _sessionRepository.Update(session);
+                return RedirectToAction("index");
             }
 
-            return View(session);
+            return View();
+
         }
 
-        // POST: Sessions/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        // Delete a session
+        public IActionResult Delete(int id)
         {
-            var session = await _context.Timetable.FindAsync(id);
-            _context.Timetable.Remove(session);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            _sessionRepository.Delete(id);
+
+            return RedirectToAction("index");
+
         }
 
-        private bool SessionExists(int id)
-        {
-            return _context.Timetable.Any(e => e.Id == id);
-        }
+
     }
 }

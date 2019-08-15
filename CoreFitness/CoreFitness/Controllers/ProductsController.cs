@@ -22,6 +22,7 @@ namespace CoreFitness.Controllers
             this.hostingEnvironment = hostingEnvironment;
         }
 
+        // Fetch and Display a list of all the products
         [HttpGet]
         public ViewResult Index()
         {
@@ -29,12 +30,23 @@ namespace CoreFitness.Controllers
             return View(model);
         }
 
+        // Display product details 
         [HttpGet]
-        public ViewResult ProductDetails(int? id)
+        public ViewResult ProductDetails(int id)
         {
+
+            Product product = _productsRepository.GetProduct(id);
+
+            if(product == null)
+            {
+                Response.StatusCode = 404;
+                return View("ProductNotFound");
+            }
+
+
             ProductDetailsViewModel productDetailsViewModel = new ProductDetailsViewModel()
             {
-                Product = _productsRepository.GetProduct(id ?? 1),
+                Product = product,
                 PageTitle = "Product Details"
             };
 
@@ -43,12 +55,13 @@ namespace CoreFitness.Controllers
         }
 
       
+        // Display Add Product Form
         public ViewResult AddProduct()
         {
             return View();
         }
 
-        // POST
+        // Add new product
         [HttpPost]
         public IActionResult AddProduct(ProductAddViewModel model)
         {
@@ -74,7 +87,10 @@ namespace CoreFitness.Controllers
 
             return View();
         }
+        
 
+
+        // Get form with current product values
         [HttpGet]
         public ViewResult EditProduct(int id)
         {
@@ -94,6 +110,7 @@ namespace CoreFitness.Controllers
             return View(productEditViewModel);
         }
 
+        // Post changes to the product
         [HttpPost]
         public IActionResult EditProduct(ProductEditViewModel model)
         {
@@ -126,14 +143,25 @@ namespace CoreFitness.Controllers
             return View();
         }
 
+        
+
+        // Delete a product
         public IActionResult DeleteProduct(int id)
         {
+
+            Product product = _productsRepository.GetProduct(id);
+
+            string filePath = Path.Combine(hostingEnvironment.WebRootPath,
+                            "images", product.ImageURL);
+            // Delete Product from database
             _productsRepository.Delete(id);
+            // Delete File from server
+            System.IO.File.Delete(filePath);
 
             return RedirectToAction("index");
-         
         }
 
+        
         private string ProcessUploadedFile(ProductAddViewModel model)
         {
             string uniqueFileName = null;
@@ -161,20 +189,23 @@ namespace CoreFitness.Controllers
         }
 
 
+
+        // Add Product to shopping cart 
         public IActionResult AddToCart (int id)
         {
             Product product = _productsRepository.GetProduct(id);
 
-            ShoppingCart shoppingCart = new ShoppingCart
-            {
-                ProductName = product.Name,
-                ProductPrice = product.Price
+            if(product != null) {
+                ShoppingCart shoppingCart = new ShoppingCart
+                {
+                    ProductName = product.Name,
+                    ProductPrice = product.Price
 
-            };
+                };
+                _productsRepository.AddToCart(shoppingCart);
+            }
 
-            _productsRepository.AddToCart(shoppingCart);
-
-            return RedirectToAction("ProductDetails");
+            return RedirectToAction("index");
         }
 
 

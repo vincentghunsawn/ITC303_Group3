@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿
+@inject SignInManager<IdentityUser> signInManager;
+
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -40,14 +44,34 @@
                     <ul class="navbar-nav flex-grow ">
 
                         <li class="nav-item">
-                            <a class="nav-link text-light text-uppercase" asp-area="" asp-controller="Products" asp-action="Index">Shop</a>
+                            <a class="nav-link text-light text-uppercase" asp-controller="Sessions" asp-action="Index">Timetable</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light text-uppercase" asp-area="" asp-controller="ShoppingCart" asp-action="Index">Cart</a>
+                            <a class="nav-link text-light text-uppercase" asp-controller="Products" asp-action="Index">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light text-uppercase" asp-area="" asp-controller="Sessions" asp-action="Index">Timetable</a>
+                            <a class="nav-link text-light text-uppercase" asp-controller="ShoppingCart" asp-action="Index">Cart</a>
                         </li>
+
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <form method="post" asp-action="logout" asp-controller="account">
+                                    <button type="submit" class="nav-link btn btn-link text-uppercase text-light">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light text-uppercase" asp-controller="Account" asp-action="register">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light text-uppercase" asp-controller="Account" asp-action="login">Login</a>
+                            </li>
+                        }
+
+
 
                     </ul>
                 </div>

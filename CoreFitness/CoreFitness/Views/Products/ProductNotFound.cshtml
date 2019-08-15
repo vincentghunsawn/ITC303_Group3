@@ -1,0 +1,19 @@
+﻿@model int
+
+@{ 
+    ViewBag.Title = "404 Error";
+}
+
+
+    <div class="alert alert-danger mt-1 mb-1">
+
+        <h4>404 Not Found </h4>
+        <hr />
+        <h5>Product with ID: @Model cannot be found</h5>
+    </div>
+
+
+    <a asp-controller="products" asp-action="index" class="btn btn-outline-success">
+        Product List
+    </a>
+
