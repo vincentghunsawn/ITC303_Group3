@@ -1,0 +1,71 @@
+﻿@model IEnumerable<IdentityRole>
+
+@{
+    ViewBag.Title = "All Roles";
+}
+
+<div class="container">
+
+    <h1 class="text-center">All Roles</h1>
+
+
+    <a asp-controller="admin" asp-action="createrole" class="btn btn-primary m-2">
+        <i class="fas fa-plus"></i> Role
+    </a>
+
+    @if (Model.Any())
+    {
+
+        foreach (var role in Model)
+        {
+            <div class="card mb-1">
+
+                <div class="card-header">
+                    Role ID: @role.Id
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> @role.Name</h5>
+                </div>
+
+                <div class="card-footer">
+                    <form asp-controller="admin" asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
+                        <a class="btn btn-primary" asp-controller="admin" asp-action="EditRole" asp-route-id="@role.Id">Edit</a>
+                        <span style="display:none" id="confirmDeleteSpan_@role.Id">
+                            <span>Are you sure you want to delete?</span>
+                            <button type="submit" class="btn btn-danger">Yes</button>
+                            <a onclick="confirmDelete('@role.Id', false)" class="btn btn-primary text-light">No</a>
+                        </span>
+
+                        <span id="deleteSpan_@role.Id">
+                            <a onclick="confirmDelete('@role.Id', true)" class="btn btn-danger text-light">Delete</a>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+
+    else
+    {
+        <div class="card">
+            <div class="card-header">
+                There are no roles in the system
+            </div>
+            <div class="card-body">
+                <h4>
+                    To create a role use the button below
+                </h4>
+                <a asp-controller="admin" asp-action="createrole" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Role
+                </a>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+@section Scripts {
+
+    <script src="~/js/site.js"></script>
+}

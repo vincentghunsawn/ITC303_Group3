@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -22,5 +23,11 @@ namespace CoreFitness.ViewModels
         [Compare("Password",
             ErrorMessage = "Password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        [RegularExpression("^[A-Za-z]+$", ErrorMessage = "Name can only contain letters")]
+        public string Name { get; set; }
+        [Required]
+        [RegularExpression("^[A-Za-z]+$", ErrorMessage = "Surname can only contain letters")]
+        public string Surname { get; set; }
     }
 }

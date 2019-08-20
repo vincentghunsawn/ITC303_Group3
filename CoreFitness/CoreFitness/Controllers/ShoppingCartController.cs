@@ -11,23 +11,32 @@ namespace CoreFitness.Controllers
     {
 
 
-        private readonly IShoppingCartRepository _shoppingCartRepository;
-        public ShoppingCartController (IShoppingCartRepository shoppingCartRepository)
+        
+        private readonly AppDbContext context;
+
+        public ShoppingCartController (AppDbContext context)
         {
-            _shoppingCartRepository = shoppingCartRepository;
+            this.context = context;
         }
 
+        // Display all items currently in the shopping cart 
         [HttpGet]
         public ViewResult Index()
         {
 
-            var model = _shoppingCartRepository.GetShoppingCart();
+            var model = context.ShoppingCart;
             return View(model);
         }
 
+        // Delete item from shopping cart
         public IActionResult Delete(int id)
         {
-            _shoppingCartRepository.Delete(id);
+            ShoppingCart shoppingCart = context.ShoppingCart.Find(id);
+            if (shoppingCart != null)
+            {
+                context.ShoppingCart.Remove(shoppingCart);
+                context.SaveChanges();
+            }
 
             return RedirectToAction("index");
 

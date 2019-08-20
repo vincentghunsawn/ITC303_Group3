@@ -41,3 +41,11 @@ C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Vie
 C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
 C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Account\Register.g.cshtml.cs
 C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Account\Login.g.cshtml.cs
+C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Admin\CreateRole.g.cshtml.cs
+C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Admin\ListAllRoles.g.cshtml.cs
+C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Admin\EditRole.g.cshtml.cs
+C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Admin\EditRoleUsers.g.cshtml.cs
+C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Account\AccessDenied.g.cshtml.cs
+C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Admin\ListAllUsers.g.cshtml.cs
+C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Admin\EditUser.g.cshtml.cs
+C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Admin\ManageUserRoles.g.cshtml.cs

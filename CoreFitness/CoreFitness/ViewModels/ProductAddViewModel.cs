@@ -12,6 +12,7 @@ namespace CoreFitness.ViewModels
     {   [Required]
         public string Name { get; set; }
         [Required]
+        [MinLength(20, ErrorMessage ="Minimum 20 characters required")]
         public string Description { get; set; }
 
         [Required]

@@ -12,12 +12,14 @@ namespace CoreFitness.Controllers
 {
     public class HomeController : Controller
     {
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
 
         [Route("Home/HttpStatusErrorHandler/{statusCode}")]
+        [AllowAnonymous]
         public IActionResult HttpStatusErrorHandler(int statusCode)
         {
             switch(statusCode)

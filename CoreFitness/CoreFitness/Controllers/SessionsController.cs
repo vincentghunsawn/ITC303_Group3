@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CoreFitness.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CoreFitness.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class SessionsController : Controller
     {
         private readonly ISessionRepository _sessionRepository;
@@ -21,6 +23,7 @@ namespace CoreFitness.Controllers
 
         // Get a list of all sessions
         [HttpGet]
+        [AllowAnonymous]
         public ViewResult Index()
         {
             var model = _sessionRepository.GetSessions();

@@ -5,25 +5,32 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoreFitness.Models;
 using CoreFitness.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreFitness.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class ProductsController : Controller
     {
 
         private readonly IProductRepository _productsRepository;
         private readonly IHostingEnvironment hostingEnvironment;
+        private readonly AppDbContext context;
+
         public ProductsController(IProductRepository productsRepository, 
-                                IHostingEnvironment hostingEnvironment)
+                                IHostingEnvironment hostingEnvironment,
+                                AppDbContext context)
         {
             _productsRepository = productsRepository;
             this.hostingEnvironment = hostingEnvironment;
+            this.context = context;
         }
 
         // Fetch and Display a list of all the products
         [HttpGet]
+        [AllowAnonymous]
         public ViewResult Index()
         {
             var model = _productsRepository.GetProducts();
@@ -32,6 +39,7 @@ namespace CoreFitness.Controllers
 
         // Display product details 
         [HttpGet]
+        [AllowAnonymous]    
         public ViewResult ProductDetails(int id)
         {
 
@@ -54,7 +62,7 @@ namespace CoreFitness.Controllers
             return View(productDetailsViewModel);
         }
 
-      
+
         // Display Add Product Form
         public ViewResult AddProduct()
         {
@@ -143,7 +151,7 @@ namespace CoreFitness.Controllers
             return View();
         }
 
-        
+
 
         // Delete a product
         public IActionResult DeleteProduct(int id)
@@ -167,13 +175,11 @@ namespace CoreFitness.Controllers
             string uniqueFileName = null;
             if (model.Photo != null)
             {
-                // The image must be uploaded to the images folder in wwwroot
-                // To get the path of the wwwroot folder we are using the inject
-                // HostingEnvironment service provided by ASP.NET Core
+                
+                // Get path of the wwwroot folder using HostingEnvornment 
                 string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
-                // To make sure the file name is unique we are appending a new
-                // GUID value and and an underscore to the file name
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
+                // Append a unique guid value and a dash to the file name
+                uniqueFileName = Guid.NewGuid().ToString() + "-" + model.Photo.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
                 // Create File stream 
@@ -191,9 +197,10 @@ namespace CoreFitness.Controllers
 
 
         // Add Product to shopping cart 
+        [AllowAnonymous]
         public IActionResult AddToCart (int id)
         {
-            Product product = _productsRepository.GetProduct(id);
+            Product product = context.Products.Find(id);
 
             if(product != null) {
                 ShoppingCart shoppingCart = new ShoppingCart
