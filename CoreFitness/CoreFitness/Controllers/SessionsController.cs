@@ -46,7 +46,9 @@ namespace CoreFitness.Controllers
                 {
                     ClassName = model.ClassName,
                     InstructorName = model.InstructorName,
-                    SessionTime = model.SessionTime
+                    SessionStartTime = model.SessionStartTime,
+                    SessionEndTime = model.SessionEndTime,
+                    Day = model.Day
                 };
 
 
@@ -70,7 +72,9 @@ namespace CoreFitness.Controllers
                 Id = session.Id,
                 ClassName = session.ClassName,
                 InstructorName = session.InstructorName,
-                SessionTime = session.SessionTime
+                SessionStartTime = session.SessionStartTime,
+                SessionEndTime = session.SessionEndTime,
+                Day = session.Day
                 
             };
 
@@ -86,7 +90,9 @@ namespace CoreFitness.Controllers
                 Session session = _sessionRepository.GetSession(model.Id);
                 session.ClassName = model.ClassName;
                 session.InstructorName = model.InstructorName;
-                session.SessionTime = model.SessionTime;
+                session.SessionStartTime = model.SessionStartTime;
+                session.SessionEndTime   = model.SessionEndTime;
+                session.Day = model.Day;
 
 
                 _sessionRepository.Update(session);

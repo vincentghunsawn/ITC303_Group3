@@ -19,8 +19,15 @@
                         Instructor
                     </th>
                     <th>
-                        Time
+                        Day
                     </th>
+                    <th>
+                        Session Start
+                    </th>
+                    <th>
+                        Session End
+                    </th>
+
                     <th></th>
                 </tr>
             </thead>
@@ -30,22 +37,28 @@
                 {
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ClassName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.InstructorName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SessionTime)
-                            </td>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="m-1"><i class="fas fa-pencil-alt text-success"></i></a>
-                                <a asp-action="Delete" asp-route-id="@item.Id" class="m-1"> <i class="fas fa-trash-alt text-danger"></i></a>
-                                <a class="btn btn-primary m-1" href="#">Book</a>
-                            </td>
-                        </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClassName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstructorName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Day)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SessionStartTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SessionEndTime)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="m-1"><i class="fas fa-pencil-alt text-success"></i></a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="m-1"> <i class="fas fa-trash-alt text-danger"></i></a>
+                        <a class="btn btn-primary m-1" href="#">Book</a>
+                    </td>
+                </tr>
                     }
                 }
                 else

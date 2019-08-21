@@ -32,7 +32,6 @@ C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Vie
 C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Products\EditProduct.g.cshtml.cs
 C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\ShoppingCart\Index.g.cshtml.cs
 C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Sessions\Create.g.cshtml.cs
-C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Sessions\Delete.g.cshtml.cs
 C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Sessions\Edit.g.cshtml.cs
 C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Sessions\Index.g.cshtml.cs
 C:\Users\Mende\Desktop\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Products\ProductNotFound.g.cshtml.cs

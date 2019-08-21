@@ -11,35 +11,54 @@
         <h4>Session</h4>
         <hr />
             
-                <form asp-action="Create">
+        <form asp-action="Create">
 
-                    <div class="form-group row">
-                        <label asp-for="ClassName" class="col-sm-2 col-form-label"></label>
-                        <div class="col-sm-10">
-                            <input asp-for="ClassName" class="form-control" />
-                            <span asp-validation-for="ClassName" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="InstructorName" class="col-sm-2 col-form-label"></label>
-                        <div class="col-sm-10">
-                            <input asp-for="InstructorName" class="form-control" />
-                            <span asp-validation-for="InstructorName" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label asp-for="SessionTime" class="col-sm-2 col-form-label"></label>
-                        <div class="col-sm-10">
-                            <input asp-for="SessionTime" class="form-control" />
-                            <span asp-validation-for="SessionTime" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="submit" value="Create" class="btn btn-primary m-2" />
-                    </div>
+            <div class="form-group row">
+                <label asp-for="ClassName" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="ClassName" class="form-control" />
+                    <span asp-validation-for="ClassName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="InstructorName" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="InstructorName" class="form-control" />
+                    <span asp-validation-for="InstructorName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="SessionStartTime" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="SessionStartTime" class="form-control" />
+                    <span asp-validation-for="SessionStartTime" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="SessionEndTime" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="SessionEndTime" class="form-control" />
+                    <span asp-validation-for="SessionEndTime" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Day" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <select asp-for="Day" class="custom-select mr-sm-2"
+                            asp-items="Html.GetEnumSelectList<Days>()">
+                        <option value="Please Select"></option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="Day"></span>
 
-                    <div asp-validation-summary="All" class="text-danger"></div>
-                </form>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <input type="submit" value="Create" class="btn btn-primary m-2" />
+            </div>
+
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </form>
         
         
 
