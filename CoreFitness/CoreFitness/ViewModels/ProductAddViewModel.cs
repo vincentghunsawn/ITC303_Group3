@@ -9,7 +9,10 @@ using Microsoft.AspNetCore.Http;
 namespace CoreFitness.ViewModels
 {
     public class ProductAddViewModel
-    {   [Required]
+    {
+        
+        [Required]
+        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Name can only contain letters")]
         public string Name { get; set; }
         [Required]
         [MinLength(20, ErrorMessage ="Minimum 20 characters required")]

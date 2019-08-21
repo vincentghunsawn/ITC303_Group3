@@ -52,7 +52,7 @@ namespace CoreFitness.Controllers
 
                 _sessionRepository.Add(newSession);
 
-                return RedirectToAction("index", new { id = newSession.Id });
+                return RedirectToAction("index");
             }
 
             return View();
