@@ -12943,27 +12943,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mende\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Users\\Dell\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mende\\Desktop\\CoreFitness\\CoreFitness\\CoreFitness.csproj",
+      "projectUniqueName": "C:\\Users\\Dell\\Documents\\GitHub\\ITC303_Group3\\CoreFitness\\CoreFitness\\CoreFitness.csproj",
       "projectName": "CoreFitness",
-      "projectPath": "C:\\Users\\Mende\\Desktop\\CoreFitness\\CoreFitness\\CoreFitness.csproj",
-      "packagesPath": "C:\\Users\\Mende\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mende\\Desktop\\CoreFitness\\CoreFitness\\obj\\",
+      "projectPath": "C:\\Users\\Dell\\Documents\\GitHub\\ITC303_Group3\\CoreFitness\\CoreFitness\\CoreFitness.csproj",
+      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Dell\\Documents\\GitHub\\ITC303_Group3\\CoreFitness\\CoreFitness\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Mende\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
