@@ -20,5 +20,7 @@ namespace CoreFitness.Models
 
         public DbSet<Session> Timetable { get; set; }
 
+        public DbSet<Booking> Booking { get; set; }
+
     }
 }

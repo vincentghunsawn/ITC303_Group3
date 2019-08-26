@@ -2,13 +2,25 @@
 @model IEnumerable<CoreFitness.Models.Product>
 
 
+
 @{
     ViewBag.Title = "Index";
 }
 
 
     <div class="container">
+
+        <form asp-controller="products" asp-action="SearchProduct">
+            <p>
+                Product Name: <input type="text" name="SearchString">
+                <input type="submit" value="Search" />
+            </p>
+        </form>
+
+
         <a asp-controller="products" asp-action="addproduct" class="btn btn-primary m-1"><i class="fas fa-plus"></i> Product</a>
+
+
 
         <div class="card-deck">
 
@@ -19,36 +31,36 @@
 
                 var myModal = "modal" + product.Id;
 
-                
 
-            <div class="col-sm-12 col-md-4">
 
-                <div class="card m-3" style="min-width: 18rem;max-width:30.5%;">
-                    
-                    <a asp-controller="products" asp-action="productdetails" asp-route-id="@product.Id">
-                        <img src="@photoPath" class="card-img-top image-thumbnail productImage" asp-append-version="true" alt="Image" />
-                    </a>
+                <div class="col-sm-12 col-md-4">
 
-                    <div>
-                        <h3 class="card-title">@product.Name</h3>
-                        <h3>$@product.Price</h3>
+                    <div class="card m-3" style="min-width: 18rem;max-width:30.5%;">
 
-                        <a asp-controller="products" asp-action="editproduct" asp-route-id="@product.Id" class="m-1 text-success">
-                            <i class="fas fa-pencil-alt"></i>
+                        <a asp-controller="products" asp-action="productdetails" asp-route-id="@product.Id">
+                            <img src="@photoPath" class="card-img-top image-thumbnail productImage" asp-append-version="true" alt="Image" />
                         </a>
 
-                        <a asp-controller="products" asp-action="deleteproduct" asp-route-id="@product.Id"
-                           onclick="return confirm('Are you sure you want to delete this product?')">
-                            <i class="fas fa-trash-alt text-danger"></i>
-                        </a>
+                        <div>
+                            <h3 class="card-title">@product.Name</h3>
+                            <h3>$@product.Price</h3>
+
+                            <a asp-controller="products" asp-action="editproduct" asp-route-id="@product.Id" class="m-1 text-success">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+
+                            <a asp-controller="products" asp-action="deleteproduct" asp-route-id="@product.Id"
+                               onclick="return confirm('Are you sure you want to delete this product?')">
+                                <i class="fas fa-trash-alt text-danger"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-                    }
-
+            }
 
 
-                </div>
-            </div>
+
+        </div>
+    </div>
 

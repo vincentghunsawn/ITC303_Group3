@@ -8,6 +8,7 @@ using CoreFitness.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoreFitness.Controllers
 {
@@ -215,6 +216,19 @@ namespace CoreFitness.Controllers
             return RedirectToAction("index");
         }
 
+        [AllowAnonymous]
+        public async Task<IActionResult> SearchProduct(string SearchString)
+        {
+            var product = from m in context.Products
+                         select m;
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                product = product.Where(s => s.Name.Contains(SearchString));
+            }
+
+            return View(await product.ToListAsync());
+        }
 
     }
 

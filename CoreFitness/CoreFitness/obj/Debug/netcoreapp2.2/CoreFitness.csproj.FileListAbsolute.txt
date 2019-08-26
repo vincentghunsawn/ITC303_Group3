@@ -99,3 +99,10 @@ C:\Users\Dell\Documents\GitHub\ITC303_Group3\CoreFitness\CoreFitness\bin\Debug\n
 C:\Users\Dell\Documents\GitHub\ITC303_Group3\CoreFitness\CoreFitness\bin\Debug\netcoreapp2.2\CoreFitness.Views.pdb
 C:\Users\Dell\Documents\GitHub\ITC303_Group3\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\CoreFitness.Views.pdb
 C:\Users\Dell\Documents\GitHub\ITC303_Group3\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\CoreFitness.csproj.CopyComplete
+C:\Users\Dell\Documents\GitHub\ITC303_Group3\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\CoreFitness.csprojAssemblyReference.cache
+C:\Users\Dell\Documents\GitHub\ITC303_Group3\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Bookings\Create.g.cshtml.cs
+C:\Users\Dell\Documents\GitHub\ITC303_Group3\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Bookings\Delete.g.cshtml.cs
+C:\Users\Dell\Documents\GitHub\ITC303_Group3\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Bookings\Details.g.cshtml.cs
+C:\Users\Dell\Documents\GitHub\ITC303_Group3\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Bookings\Edit.g.cshtml.cs
+C:\Users\Dell\Documents\GitHub\ITC303_Group3\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Bookings\Index.g.cshtml.cs
+C:\Users\Dell\Documents\GitHub\ITC303_Group3\CoreFitness\CoreFitness\obj\Debug\netcoreapp2.2\Razor\Views\Products\SearchProduct.g.cshtml.cs
