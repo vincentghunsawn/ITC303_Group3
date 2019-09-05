@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<CoreFitness.Models.Session>
 @inject SignInManager<User> signInManager;
+@inject  AppDbContext _context;
 
 @{
     ViewBag.Title = "Index";
@@ -29,7 +30,6 @@
                     Session End
                 </th>
 
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -38,34 +38,44 @@
             {
                 @foreach (var item in Model)
                 {
-                    <tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClassName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstructorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Day)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SessionStartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SessionEndTime)
+                </td>
+                @if (signInManager.IsSignedIn(User))
+                {
+                    @if (!_context.Booking.Any(d => d.UserID == User.Identity.Name && d.ClassName == item.ClassName))
+                    {
                         <td>
-                            @Html.DisplayFor(modelItem => item.ClassName)
+                            <form asp-controller="Bookings" asp-action="Create" asp-route-classname="@item.ClassName" asp-route-userid=@User.Identity.Name>
+                                <div class="form-group">
+                                    <input type="submit" value="Book" class="btn btn-primary" />
+                                </div>
+                            </form>
                         </td>
+                    }
+                    else
+                    {
                         <td>
-                            @Html.DisplayFor(modelItem => item.InstructorName)
+                            You are already in this session.
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Day)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SessionStartTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SessionEndTime)
-                        </td>
-                        @if (signInManager.IsSignedIn(User))
-                        {
-                            <td>
-                                <form asp-controller="Bookings" asp-action="Create" asp-route-classname="@item.ClassName" asp-route-userid=@User.Identity.Name>
-                                    <div class="form-group">
-                                        <input type="submit" value="Book" class="btn btn-primary" />
-                                    </div>
-                                </form>
-                            </td>
-                        }
+                    }
 
-                    </tr>
+                }
+
+            </tr>
                 }
             }
             else
