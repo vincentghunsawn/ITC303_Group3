@@ -43,10 +43,10 @@ namespace CoreFitness.Controllers
         }
 
         // GET: Bookings/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
 
         // POST: Bookings/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
