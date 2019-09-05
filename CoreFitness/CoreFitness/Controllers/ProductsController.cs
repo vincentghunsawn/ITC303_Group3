@@ -219,15 +219,15 @@ namespace CoreFitness.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> SearchProduct(string SearchString)
         {
-            var product = from m in context.Products
+            var model = from m in context.Products
                          select m;
 
             if (!String.IsNullOrEmpty(SearchString))
             {
-                product = product.Where(s => s.Name.Contains(SearchString));
+                model = model.Where(s => s.Name.Contains(SearchString));
             }
 
-            return View(await product.ToListAsync());
+            return View("Index", await model.ToListAsync());
         }
 
     }
