@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CoreFitness.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CoreFitness.Controllers
 {
+    [Authorize]
     public class BookingsController : Controller
     {
         private readonly AppDbContext _context;
@@ -19,9 +21,11 @@ namespace CoreFitness.Controllers
         }
 
         // GET: Bookings
+        
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Booking.ToListAsync());
+            var resultList = _context.Booking.Where(d => d.UserID == User.Identity.Name).ToList();
+            return View(resultList);
         }
 
         // GET: Bookings/Details/5
@@ -42,11 +46,6 @@ namespace CoreFitness.Controllers
             return View(booking);
         }
 
-        // GET: Bookings/Create
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
 
         // POST: Bookings/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

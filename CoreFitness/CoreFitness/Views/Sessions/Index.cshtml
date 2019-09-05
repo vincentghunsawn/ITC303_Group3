@@ -1,75 +1,80 @@
 ﻿@model IEnumerable<CoreFitness.Models.Session>
+@inject SignInManager<User> signInManager;
 
 @{
     ViewBag.Title = "Index";
 }
 
-    <div class="container">
-        <h1 class="text-center">Timetable</h1>
-        <p>
-            <a asp-action="Create" class="btn btn-primary m-1"><i class="fas fa-plus"></i> Session</a>
-        </p>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        Class
-                    </th>
-                    <th>
-                        Instructor
-                    </th>
-                    <th>
-                        Day
-                    </th>
-                    <th>
-                        Session Start
-                    </th>
-                    <th>
-                        Session End
-                    </th>
+<div class="container">
+    <h1 class="text-center">Timetable</h1>
+    <p>
+        <a asp-action="Create" class="btn btn-primary m-1"><i class="fas fa-plus"></i> Session</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Class
+                </th>
+                <th>
+                    Instructor
+                </th>
+                <th>
+                    Day
+                </th>
+                <th>
+                    Session Start
+                </th>
+                <th>
+                    Session End
+                </th>
 
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
 
-                @if (Model.Any())
-                {
-                    @foreach (var item in Model)
-                    {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ClassName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.InstructorName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Day)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SessionStartTime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SessionEndTime)
-                    </td>
-                    <td>
-                        <form asp-controller="Bookings" asp-action="Create"  asp-route-classname="@item.ClassName" asp-route-userid=@User.Identity.Name>
-                            <div class="form-group">
-                                <input type="submit" value="Book" class="btn btn-primary" />
-                            </div>
-                        </form>
-                    </td>
-                </tr>
-                    }
-                }
-                else
+            @if (Model.Any())
+            {
+                @foreach (var item in Model)
                 {
                     <tr>
-                        <td>No sessions available at the current time</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ClassName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InstructorName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Day)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SessionStartTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SessionEndTime)
+                        </td>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <td>
+                                <form asp-controller="Bookings" asp-action="Create" asp-route-classname="@item.ClassName" asp-route-userid=@User.Identity.Name>
+                                    <div class="form-group">
+                                        <input type="submit" value="Book" class="btn btn-primary" />
+                                    </div>
+                                </form>
+                            </td>
+                        }
+
                     </tr>
                 }
+            }
+            else
+            {
+                <tr>
+                    <td>No sessions available at the current time</td>
+                </tr>
+            }
 
-            </tbody>
-        </table>
-    </div>
+        </tbody>
+    </table>
+</div>
