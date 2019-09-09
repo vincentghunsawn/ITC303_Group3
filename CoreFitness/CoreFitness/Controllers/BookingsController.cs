@@ -21,8 +21,7 @@ namespace CoreFitness.Controllers
         }
 
         // GET: Bookings
-        
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             var resultList = _context.Booking.Where(d => d.UserID == User.Identity.Name).ToList();
             return View(resultList);
@@ -46,10 +45,7 @@ namespace CoreFitness.Controllers
             return View(booking);
         }
 
-
         // POST: Bookings/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,ClassName,UserID")] Booking booking)
@@ -58,57 +54,6 @@ namespace CoreFitness.Controllers
             {
                 _context.Add(booking);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(booking);
-        }
-
-        // GET: Bookings/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var booking = await _context.Booking.FindAsync(id);
-            if (booking == null)
-            {
-                return NotFound();
-            }
-            return View(booking);
-        }
-
-        // POST: Bookings/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ClassName,UserID")] Booking booking)
-        {
-            if (id != booking.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(booking);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!BookingExists(booking.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
                 return RedirectToAction(nameof(Index));
             }
             return View(booking);
