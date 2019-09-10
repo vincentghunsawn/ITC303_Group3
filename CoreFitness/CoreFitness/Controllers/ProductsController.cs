@@ -59,7 +59,6 @@ namespace CoreFitness.Controllers
                 PageTitle = "Product Details"
             };
 
-
             return View(productDetailsViewModel);
         }
 
@@ -199,7 +198,7 @@ namespace CoreFitness.Controllers
 
         // Add Product to shopping cart 
         [AllowAnonymous]
-        public IActionResult AddToCart (int id)
+        public IActionResult AddToCart (int id, int qty)
         {
             Product product = context.Products.Find(id);
 
@@ -207,8 +206,8 @@ namespace CoreFitness.Controllers
                 ShoppingCart shoppingCart = new ShoppingCart
                 {
                     ProductName = product.Name,
-                    ProductPrice = product.Price
-
+                    ProductPrice = product.Price,
+                    ProductQuantity = qty
                 };
                 _productsRepository.AddToCart(shoppingCart);
             }

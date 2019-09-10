@@ -1,46 +1,43 @@
 ﻿@model IEnumerable<CoreFitness.Models.ShoppingCart>
 
-
-
 @{
-
-    ViewBag.Title = "Shopping Cart";
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h1>Index</h1>
 
-    <div class="container">
-        @if (Model.Any())
-        {
-            @foreach (var item in Model)
-            {
-
-                <div class="row">
-                    <h3 class="col">
-                        @item.ProductName
-                    </h3>
-                    <h3 class="col">@item.ProductPrice</h3>
-
-                    <a asp-controller="shoppingcart" asp-action="delete" asp-route-id="@item.Id" class="btn btn-danger m-1">Remove Item</a>
-                </div>
-
-                @if (item == null)
-                {
-                    <h1>There are no items in the shopping cart</h1>
-                }
-
-            }
-        }
-        else
-        {
-            <h1 class="text-center m-2">The shopping cart is empty</h1>
-        }
-
-
-
-
-
-
-
-    </div>
-
-
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductQuantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductQuantity)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

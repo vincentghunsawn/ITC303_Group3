@@ -7,8 +7,6 @@ namespace CoreFitness.Models
 {
     public class ShoppingCart
     {
-
-
         public int Id { get; set; }
        
         public string ProductName
@@ -18,6 +16,8 @@ namespace CoreFitness.Models
         }
 
         public string ProductPrice { get; set; }
+
+        public int ProductQuantity { get; set; }
 
     }
 }

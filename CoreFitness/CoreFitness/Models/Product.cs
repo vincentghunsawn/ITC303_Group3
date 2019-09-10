@@ -40,5 +40,11 @@ namespace CoreFitness.Models
             set;
         }
 
+        public int Quantity
+        {
+            get;
+            set;
+        }
+
     }
 }

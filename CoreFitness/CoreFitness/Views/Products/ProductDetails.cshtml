@@ -16,19 +16,56 @@
                     <img class="card-img-top" src="@photoPath" asp-append-version="true" />
 
                     <p>@Model.Product.Description</p>
-                 
-                    <h4>Availability : @Model.Product.Availability</h4>
 
                     <h4>Price: @Model.Product.Price</h4>
 
+                    <label>Units to order: </label><p>(@Model.Product.Quantity available)</p>
+
+
+                    <input id="orderAmt" type="text" class="form-control" />
                 </div>
                 <div class="card-footer text-center">
                     <a asp-controller="products" asp-action="index" class="btn btn-primary">Back</a>
 
-                    <a asp-controller="products" asp-action="addtocart" asp-route-id="@Model.Product.Id" class="float-right text-secondary"
-                       onclick="return confirm('Are you sure you want to add this product to the cart?')"><i class="fas fa-2x fa-cart-plus"></i></a>
+                    <a class="float-right text-secondary"
+                       onclick="addToCart()"><i class="fas fa-2x fa-cart-plus"></i></a>
+                    <div hidden>
+                        @using (Html.BeginForm("AddToCart", "Products", FormMethod.Post))
+                        {
+                            <input type="text" id="id" name="id" value="@Model.Product.Id" />
+                            <input type="text" id="qty" name="qty" />
+                            <input type="submit" id="postButton" value="post" />
+                        }
+                    </div>
+                    
+                    @*<a id="postButton" hiddens class="float-right text-secondary" asp-controller="products" asp-action="AddToCart" asp-route-id="@Model.Product.Id" asp-route-qty="$(" orderAmt").val()">
+                    </a>*@
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+
+        function addToCart() {
+
+            var x = 0;
+            var y = 0;
+
+            y = document.getElementById("orderAmt").value;
+            postValue = document.getElementById("qty");
+
+            if (y =="") {
+                alert("Please enter how many units you want to order before adding to cart.");
+            }
+            else if (y > @Model.Product.Quantity) {
+                alert("Sorry this product is running out of stock! There is only " + @Model.Product.Quantity + " left.")
+            }
+            else {
+                postValue.value = y; 
+                document.getElementById("postButton").click();
+                alert("Product added");
+            }
+        }
+    </script>
 
